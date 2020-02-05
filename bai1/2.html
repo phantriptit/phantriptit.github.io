@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF8"/>
+	<style type="text/css">
+		.tieude{
+			font-size: 27px;
+		}
+	</style>
+
+<title></title>
+</head>
+<body>
+	<p class="tieude">Authentication là gì ?</p>
+	<p>09 tháng 01, 2020</p>
+	<p>Bài viết này giúp các bạn nắm được bản chất của xác thực (authentication) trong lập trình web và mobile</p>
+	<h2>Authentication là gì ?</h2>
+	<p>Theo wikipedia thì: </p>
+	<i>Xác thực <b>(authentication)</b> là một hành động nhằm thiết lập hoặc chứng thực một cái gì đó (hoặc một người nào đó) đáng tin cậy, có nghĩa là, những lời khai báo do người đó đưa ra hoặc về vật đó là sự thật.</i>
+	<p>Quả là một định nghĩa không những rộng lớn mà còn mang tính bao quát nhiều mặt của vấn đề. Một kinh nghiệm rất lớn khi các bạn tiếp cận khái niệm nào đó chính là đưa nó về một ngữ cảnh cụ thể. Cái định nghĩa authentication mà wikipedia đưa ra nó bao hàm rất nhiều thứ, và khi áp dụng vào mỗi hoàn cảnh cụ thể nó lại có một ý nghĩa khác nhau.</p>
+	<p>Ví dụ cùng là authentication trong ứng dụng web thì nó có thể xuất hiện ở các lớp nghĩa khác nhau:</p>
+	<ul>
+		<li>VD1: Việc server xác thực <b>yêu cầu</b> do đúng là từ client của người dùng gửi lên hay không cũng là authentication.</li>
+		<li>VD2: Việc server xác thực <b>nội dung yêu cầu</b> do đúng từ người dùng A gửi lên hay không cũng là authentication.</li>
+	</ul>
+	<p>Với 2 lớp nghĩa này, các bạn có thể tưởng tượng như ở VD1 là xác thực <b>cái phong bì</b>, kiểm tra tem thư, địa chỉ gửi xem có đúng là từ thôn cành lá xã cành cây huyện trời mây gửi đến hay không, rồi thì phong bì có bị bóc hay chưa, còn niêm phong không. Còn VD2 là xác thực <b>nội dung thư</b>, kiểm tra chữ ký xem có đúng là của anh Khá từ trại không,...</p>
+	<p>Tuy nhiên, việc kiểm tra <b>cái phong bì</b> thường là việc của một bộ phận dev khác, liên quan tới hệ thống nhiều hơn, do vậy mình sẽ không đề cập nhiều tới trong bài viết này. Các bạn chỉ cần hiểu được nó là quá trình gì thôi là được. Từ đây về sau khi mình nhắc tới <b>authentication</b> tức là sẽ nhắc tới việc <b>xác thực người dùng</b> ở cấp ứng dụng, hay chính là cái <b>thư được gửi từ ai nhé</b>.</p>
+	<h2>Bản chất của authentication là gì ?</h2>
+	<p>Vậy thì chúng ta làm sao biết được thư này được gửi đến từ anh Khá mà không phải từ một thằng ất ơ nào mạo danh? Chúng ta cũng đều biết Website, Web service được tạo nên từ các <b>HTTP request</b>.</p>
+	<i>Ví dụ bạn vào trang web facebook.com. Đầu tiên trình duyệt gọi 1 HTTP request tới facebook.com để lấy nội dung HTML. Sau đó lại gọi nhiều HTTP request tới lấy nội dung JS, css, ảnh,... rồi lại gọi nhiều HTTP request để lấy danh sách bạn bè, bài đăng,... Có tất cả những thông tin này, trình duyệt mới hiển thị cho bạn được trang facebook với rất nhiều nội dung và tương tác như thế.</i>
+	<p>Tuy nhiên, về cơ bản thì <b>HTTP request là một stateless protocol</b> (HTTP2 có stateful component nhưng cơ bản HTTP vẫn là stateless). Stateless nghĩa là sao? Tức là server xử lý các request một cách <b>độc lập, không phụ thuộc vào trạng thái hay kết quả của request trước</b>.</p>
+	<i>Stateless/stateful là tính chất mang tính tương đối. Dưới góc độ protocol thì HTTP là stateless, tuy nhiên dưới góc độ application thì ta đang cố làm nó trở thành stateful.</i>
+	<p>Cái này cũng giống như 2 người thư từ với nhau, mỗi lá thư là <b>độc lập</b>. Lá thư đầu tiên gửi từ địa chỉ A mình tin là của anh Khá, nhưng lá thư thứ 2 cũng từ địa chỉ A gửi tới thì mình chưa chắc đã tin và lại phải xác nhận lại.</p>
+	<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/fq28pddcuf_Authentication-1.png">
+	<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Stateless HTTP</i></div>
+	<p>Vì thế bản chất của authentication ở đây chính là việc bạn xác nhận <b>HTTP request</b> được gửi từ <b>một người nào đó</b>.</p>
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/uacfiyvr11_http%20%282%29.png">
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Xác thực request gửi đến</i></div>
+<h2>Authentication được thực hiện như thế nào ?</h2>
+<p>Các bạn đã hiểu bản chất của authentication rồi, vậy thì nó sẽ được thực hiện như thế nào?</p>
+<p>Đối với một bức thư, cách để bạn biết thư được gửi đúng từ một người nào đó là <b>chữ ký, nét chữ,...</b> hay bất kể một <b>dấu hiệu</b> nào đó được <b>thống nhất</b> từ trước giữa 2 người.</p>
+<p>Quay trở lại với một <b>HTTP request</b>. Bản chất của HTTP request cũng là một bản tin biểu diễn bằng text. Do đó cũng sẽ cần một <b>dấu hiệu</b> nào đó được <b>thống nhất</b> để ứng dụng của chúng ta nhận ra nó xuất phát từ người dùng nào.</p>
+<ul>
+	<li>Một dấu hiệu nhận biết người dùng có thể là bất kỳ thứ gì mang tính đặc trưng, như <b>tên đăng nhập, mật khẩu, một chuôĩ chứa thông tin được mã hóa</b>, hay thậm chí là <b>một chuỗi ký tự random</b>.</li>
+	<li>Dấu hiệu nhận biết người dùng có thể ở bất kỳ vị trí nào có thể trong bản tin HTTP như: <b>URL, Header</b> (Cookie header, Authorization header, Custom header), <b>Body</b> (Form field,...)</li>
+</ul>
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/8pt7zbtoka_untitled.png">
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Dấu hiệu nhận biết người dùng</i></div>
+<h2>Quá trình authentication</h2>
+<p>Để có được dấu hiệu nhận dạng phía trên, ta cần có <b>sự thống nhất</b> trước giữa người dùng và ứng dụng để ứng dụng của chúng ta có thể nhận dạng được người dùng. Một quá trình authentication sẽ bao gồm 3 phần:</p>
+<ul>
+	<li><b>Sinh ra dấu hiệu</b>: Đây là việc chúng ta quyết định xem <b>dùng dấu hiệu gì</b>, tạo ra dấu hiệu đó như thế nào. Một quá trình authentication có thể có sự xuất hiện của nhiều dấu hiệu, ví dụ username/password, user token, api key,... Các dấu hiệu này sẽ có cách sinh ra khác nhau, quy ước sử dụng khác nhau.</li>
+<li><b>Lưu trữ dấu hiệu</b>: Đây là việc ứng dụng sẽ quyết định lưu trữ dấu hiệu này ở đâu, ở cả server và client, thông qua vị trí nào trên bản tin HTTP,...</li>
+<li><b>Kiểm tra dấu hiệu</b>: Đây là việc ứng dụng của chúng ta kiểm tra lại tính hợp lệ của dấu hiệu, đối chiếu xem dấu hiệu này là của người dùng nào,...</li></ul>
+</p>
+<img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/d7ztcnu779_http%20%282%29%20%281%29.png">
+<div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>Ví dụ quá trình authentication</i></div>
+<h2>Tổng kết</h2>
+<p>Trên đây chính là những khái niệm cơ bản nhất về authentication. Cho dù là bạn dùng Basic Authentication, Single Sign-on, OAuth 2.0, Social Sign-in,... hay là phương thức nào đi chăng nữa thì chung quy lại cũng đều là làm việc: <b>Xác thực một HTTP request bằng một dấu hiệu nào đó</b>.</p>
+<p>Còn việc xuất hiện ra những phương pháp xác thực phía trên nó chỉ là ở 3 việc:<br/>
+<ul>
+	<b>
+<li>Tạo ra dấu hiệu gì</li>
+<li>Lưu trữ dấu hiệu ở đâu</li>
+<li>Kiểm tra dấu hiệu thế nào</li>
+</b>
+</ul></p>
+<p>Nắm được điểm cơ bản này, mình tin các bạn sẽ tiếp cận với tất cả các hình thức authentication dưới một cái nhìn khác mang tính hệ thống hơn.
+
+Ở bài viết tiếp theo, chúng ta sẽ nói kỹ hơn về các phương thức xác thực người dùng cơ bản.</p>
+<p>Link bài viết gốc: <font style="color: blue">Authentication story part 1: Authentication là làm gì?</font> của tác giả <font style="color: blue">Minh Monmen</font>
+
+</p>
+
+</body>
+</body>
+</html>
