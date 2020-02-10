@@ -1,0 +1,17 @@
+.main-menu a{
+ font-size: 35px;
+ margin-right: 60px;
+ text-decoration: none; 
+ color: white;
+}
+
+#all{
+	background-color: orange;
+}
+img{
+	max-width: 300px;
+	width:20%;
+	}
+	.main-menu a:hover{
+		color:blue;
+	}
