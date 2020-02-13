@@ -1,0 +1,79 @@
+h1{
+	text-align: center;
+	color: #048ac9;
+}
+
+/*---------------------------menu----------------------------------*/
+
+.box{
+	box-sizing: border-box;
+	font-size: 30px;
+	width: 100%;
+	color: white;
+}
+.menu{
+	background: #00ACE9;
+}
+.menu-con a{
+	text-decoration: none;
+	margin-right: 50px;
+	color: white;
+}
+.menu-con a:hover{
+		color: #ffa800;
+	}
+.menu-con{
+	float: right;
+	padding-top: 10px;
+
+}
+.logo{
+	max-width:20%;
+	height: 50px;
+	margin-left: 20px;
+}
+
+/*-------------------------gallery1----------------------------*/
+
+.ten-album1{
+	box-sizing: border-box;
+	background-color: #D43F3f;
+	width: 100%;
+	margin-top: 100px;
+	font-weight: bold;
+	text-align: center;
+}
+.album {
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-around;
+	width: 100%;
+}
+.album img{
+	width: 100%;
+}
+
+
+
+
+/*---------------------------gallery2-------------------------------*/
+
+.ten-album2{
+	box-sizing: border-box;
+	background-color: #6a9a1f;
+	width: 100%;
+	margin-top: 100px;
+	font-weight: bold;
+	text-align: center;
+}
+
+/*----------------------------gallery3-------------------------------*/
+
+.ten-album3{
+	box-sizing: border-box;
+	background-color: #03415e;
+	width: 100%;
+	margin-top: 100px;
+	font-weight: bold;
+	text-align: center;
+}
