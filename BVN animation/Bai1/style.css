@@ -1,0 +1,17 @@
+.container {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+
+}
+ .item img{
+  width: 100%;
+ }
+
+.item:hover {
+	border:1px solid black;
+	background: white;
+	padding: 5px;
+	transform: scale(1.3);
+}

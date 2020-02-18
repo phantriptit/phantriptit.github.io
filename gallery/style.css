@@ -11,8 +11,7 @@ h1{
 /*---------------------------menu----------------------------------*/
 
 .anh{
-	width: 33.33%;
-	float: left;
+	width: 100%;
 }
 .box{
 	box-sizing: border-box;
@@ -20,6 +19,7 @@ h1{
 	width: 100%;
 	color: white;
 	font-weight: bold;
+	margin-top: 100px;
 }
 .menu{
 	background: #03415e;
@@ -54,6 +54,9 @@ h1{
 }
 .album {
 	width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
 }
 
 
@@ -73,6 +76,7 @@ h1{
 	background-color: #ffa800;
 	width: 100%;
 	text-align: center;
+
 }
 
 
