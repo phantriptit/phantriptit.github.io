@@ -1,17 +1,21 @@
-.container {
-  width: 50%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 5px;
 
+.khung{
+	font-size:40px;
+	border-radius: 10px;
+	background-color: #2396e7;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	margin: auto;
+	max-width: 200px;
+	max-height: 130px;
 }
- .item img{
-  width: 100%;
- }
-
-.item:hover {
-	border:1px solid black;
-	background: white;
-	padding: 5px;
-	transform: scale(1.3);
+.khung a{
+	text-decoration: none;
+	color:white;
+}
+.khung:hover{
+	background: #24c197;
+	border-radius: 10px;
 }

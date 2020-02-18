@@ -1,0 +1,46 @@
+*{
+	margin: 0px;
+	padding:0px;
+}
+.container{
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	position: relative;
+	display: flex;
+	justify-content: center;
+}
+.text{
+	display: inline-block;
+	position: absolute;
+	width: 150px;
+	height: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+.text1{
+	background: red;
+	z-index: 2;
+}
+.text2{
+	background: green;
+	z-index: 1;
+	animation: text2 2s ease infinite;
+}
+.text3{
+	background: blue;
+	z-index: 0;
+	animation: text3 2s ease infinite;
+}
+@keyframes text2 {
+	31%{z-index: 1}
+	33%{z-index: 3}
+	100%{z-index: 3}
+}
+@keyframes text3 {
+	64% {z-index: 0}
+	66%{z-index: 4}
+	100%{z-index: 4}
+}

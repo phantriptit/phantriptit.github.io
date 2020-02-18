@@ -1,10 +1,17 @@
-@keyframes traitim {
-	0%{transform: scale(1);}
-	25%{transform: scale(1.2);}
-	50%{transform: scale(1);}
-	75%{transform: scale(1.2);}
-	100%{transform: scale(1);}
+.container {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 5px;
+
 }
-img{
-	animation: traitim 2s ease infinite;
+ .item img{
+  width: 100%;
+ }
+
+.item:hover {
+	border:1px solid black;
+	background: white;
+	padding: 5px;
+	transform: scale(1.3);
 }
