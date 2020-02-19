@@ -6,12 +6,12 @@
 	font-size: 20px;
 	font-weight: bold;
 	color: white;
-	position: relative;
-	display: flex;
-	justify-content: center;
+	position: absolute;
+	width: 150px;
+	height: 90px;
+	display: inline-block;
 }
 .text{
-	display: inline-block;
 	position: absolute;
 	width: 150px;
 	height: 30px;
@@ -20,27 +20,41 @@
 	justify-content: center;
 
 }
+.text0{
+	background: #76179e;
+	z-index: 3;
+}
 .text1{
 	background: red;
-	z-index: 2;
+	z-index: 0;
+	animation: text1 2s ease infinite;
+	transition: 0.1s;
 }
 .text2{
 	background: green;
 	z-index: 1;
-	animation: text2 2s ease infinite;
+	top: 30px;
 }
 .text3{
 	background: blue;
-	z-index: 0;
+	z-index: 3;
 	animation: text3 2s ease infinite;
+	transition: 0.05s;
 }
-@keyframes text2 {
-	31%{z-index: 1}
-	33%{z-index: 3}
-	100%{z-index: 3}
+.text4{
+	background: orange;
+	z-index: 4;
+}
+.text3, .text4{
+	top: 60px;
+}
+@keyframes text1 {
+0%{top: 0px; left: 0px;z-index: 0}
+55%{top: 30px; left: 0px;z-index: 2;}
+100%{top: 30px; left: 0px;z-index: 2;}
 }
 @keyframes text3 {
-	64% {z-index: 0}
-	66%{z-index: 4}
-	100%{z-index: 4}
+0%{top: 60px; left: 0px;}
+70%{top: 60px; left: 0px;}
+100%{top: 30px; left: 0px;}
 }

@@ -3,15 +3,19 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 5px;
-
 }
  .item img{
   width: 100%;
+  display: block;
  }
-
-.item:hover {
+.item{
 	border:1px solid black;
 	background: white;
+	padding: 5px;
+	transition: transform 0.3s ease-in-out;
+	cursor: pointer;
+}
+.item:hover {
 	padding: 5px;
 	transform: scale(1.3);
 }
