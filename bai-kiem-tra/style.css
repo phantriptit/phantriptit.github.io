@@ -21,8 +21,9 @@ h1{
 	width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 30px;
     text-align: center;
+    padding:0px 50px 0px 50px;
 }
 .text{
 	margin:50px 0px 50px 0px;
@@ -30,10 +31,12 @@ h1{
 }
 a:hover img{
 	transform: scale(1.1);
-	transition: 1s;
 	border:1px solid black;
 	padding:5px;
 	background-color: #d9d9d9;
+}
+img{
+	transition: 1s;
 }
 .text:hover{
 	transform: scale(1.2);
